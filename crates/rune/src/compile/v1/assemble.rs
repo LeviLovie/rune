@@ -1291,6 +1291,7 @@ fn expr<'a, 'hir>(
         hir::ExprKind::For(hir) => expr_for(cx, hir, span, needs)?,
         hir::ExprKind::Loop(hir) => expr_loop(cx, hir, span, needs)?,
         hir::ExprKind::Let(hir) => expr_let(cx, hir, needs)?,
+        hir::ExprKind::Global(hir) => expr_global(cx, hir, needs)?,
         hir::ExprKind::Group(hir) => expr(cx, hir, needs)?,
         hir::ExprKind::Unary(hir) => expr_unary(cx, hir, span, needs)?,
         hir::ExprKind::Assign(hir) => expr_assign(cx, hir, span, needs)?,
@@ -2527,6 +2528,28 @@ fn expr_index<'a, 'hir>(
 fn expr_let<'a, 'hir>(
     cx: &mut Ctxt<'a, 'hir, '_>,
     hir: &'hir hir::ExprLet<'hir>,
+    needs: &mut dyn Needs<'a, 'hir>,
+) -> compile::Result<Asm<'hir>> {
+    let mut load =
+        |cx: &mut Ctxt<'a, 'hir, '_>, needs: &mut dyn Needs<'a, 'hir>| expr(cx, &hir.expr, needs);
+
+    converge!(pattern_panic(cx, &hir.pat, move |cx, false_label| {
+        pat_binding(cx, &hir.pat, false_label, &mut load)
+    })?);
+
+    // If a value is needed for a let expression, it is evaluated as a unit.
+    if let Some(out) = needs.try_alloc_output()? {
+        cx.asm.push(Inst::unit(out), hir)?;
+    }
+
+    Ok(Asm::new(hir, ()))
+}
+
+/// Assemble a global expression.
+#[instrument_ast(span = span)]
+fn expr_global<'a, 'hir>(
+    cx: &mut Ctxt<'a, 'hir, '_>,
+    hir: &'hir hir::ExprGlobal<'hir>,
     needs: &mut dyn Needs<'a, 'hir>,
 ) -> compile::Result<Asm<'hir>> {
     let mut load =

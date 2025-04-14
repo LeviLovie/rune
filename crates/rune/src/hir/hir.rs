@@ -210,6 +210,7 @@ pub(crate) enum ExprKind<'hir> {
     Loop(&'hir ExprLoop<'hir>),
     For(&'hir ExprFor<'hir>),
     Let(&'hir ExprLet<'hir>),
+    Global(&'hir ExprGlobal<'hir>),
     If(&'hir Conditional<'hir>),
     Match(&'hir ExprMatch<'hir>),
     Call(&'hir ExprCall<'hir>),
@@ -331,6 +332,17 @@ pub(crate) struct ExprFor<'hir> {
 #[try_clone(copy)]
 #[non_exhaustive]
 pub(crate) struct ExprLet<'hir> {
+    /// The name of the binding.
+    pub(crate) pat: PatBinding<'hir>,
+    /// The expression the binding is assigned to.
+    pub(crate) expr: Expr<'hir>,
+}
+
+/// A global expression `global <name> = <expr>`
+#[derive(Debug, TryClone, Clone, Copy, Spanned)]
+#[try_clone(copy)]
+#[non_exhaustive]
+pub(crate) struct ExprGlobal<'hir> {
     /// The name of the binding.
     pub(crate) pat: PatBinding<'hir>,
     /// The expression the binding is assigned to.

@@ -1,9 +1,9 @@
+use core::fmt;
 use crate::alloc::clone;
 use crate::ast;
 use crate::compile;
 use crate::macros;
 use crate::parse;
-use core::fmt;
 
 use crate as rune;
 
@@ -37,10 +37,7 @@ impl ast::ToAst for Abstract {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Abstract => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Abstract,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Abstract)),
         }
     }
 
@@ -76,11 +73,7 @@ impl parse::Peek for Abstract {
 }
 
 impl macros::ToTokens for Abstract {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Abstract,
@@ -115,10 +108,7 @@ impl ast::ToAst for AlignOf {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::AlignOf => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::AlignOf,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::AlignOf)),
         }
     }
 
@@ -154,11 +144,7 @@ impl parse::Peek for AlignOf {
 }
 
 impl macros::ToTokens for AlignOf {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::AlignOf,
@@ -193,10 +179,7 @@ impl ast::ToAst for Amp {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Amp => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Amp,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Amp)),
         }
     }
 
@@ -232,11 +215,7 @@ impl parse::Peek for Amp {
 }
 
 impl macros::ToTokens for Amp {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Amp,
@@ -271,10 +250,7 @@ impl ast::ToAst for AmpAmp {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::AmpAmp => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::AmpAmp,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::AmpAmp)),
         }
     }
 
@@ -310,11 +286,7 @@ impl parse::Peek for AmpAmp {
 }
 
 impl macros::ToTokens for AmpAmp {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::AmpAmp,
@@ -349,10 +321,7 @@ impl ast::ToAst for AmpEq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::AmpEq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::AmpEq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::AmpEq)),
         }
     }
 
@@ -388,11 +357,7 @@ impl parse::Peek for AmpEq {
 }
 
 impl macros::ToTokens for AmpEq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::AmpEq,
@@ -427,10 +392,7 @@ impl ast::ToAst for Arrow {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Arrow => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Arrow,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Arrow)),
         }
     }
 
@@ -466,11 +428,7 @@ impl parse::Peek for Arrow {
 }
 
 impl macros::ToTokens for Arrow {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Arrow,
@@ -505,10 +463,7 @@ impl ast::ToAst for As {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::As => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::As,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::As)),
         }
     }
 
@@ -544,11 +499,7 @@ impl parse::Peek for As {
 }
 
 impl macros::ToTokens for As {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::As,
@@ -583,10 +534,7 @@ impl ast::ToAst for Async {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Async => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Async,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Async)),
         }
     }
 
@@ -622,11 +570,7 @@ impl parse::Peek for Async {
 }
 
 impl macros::ToTokens for Async {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Async,
@@ -661,10 +605,7 @@ impl ast::ToAst for At {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::At => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::At,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::At)),
         }
     }
 
@@ -700,11 +641,7 @@ impl parse::Peek for At {
 }
 
 impl macros::ToTokens for At {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::At,
@@ -739,10 +676,7 @@ impl ast::ToAst for Await {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Await => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Await,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Await)),
         }
     }
 
@@ -778,11 +712,7 @@ impl parse::Peek for Await {
 }
 
 impl macros::ToTokens for Await {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Await,
@@ -817,10 +747,7 @@ impl ast::ToAst for Bang {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Bang => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Bang,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Bang)),
         }
     }
 
@@ -856,11 +783,7 @@ impl parse::Peek for Bang {
 }
 
 impl macros::ToTokens for Bang {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Bang,
@@ -895,10 +818,7 @@ impl ast::ToAst for BangEq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::BangEq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::BangEq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::BangEq)),
         }
     }
 
@@ -934,11 +854,7 @@ impl parse::Peek for BangEq {
 }
 
 impl macros::ToTokens for BangEq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::BangEq,
@@ -973,10 +889,7 @@ impl ast::ToAst for Become {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Become => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Become,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Become)),
         }
     }
 
@@ -1012,11 +925,7 @@ impl parse::Peek for Become {
 }
 
 impl macros::ToTokens for Become {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Become,
@@ -1051,10 +960,7 @@ impl ast::ToAst for Break {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Break => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Break,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Break)),
         }
     }
 
@@ -1090,11 +996,7 @@ impl parse::Peek for Break {
 }
 
 impl macros::ToTokens for Break {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Break,
@@ -1129,10 +1031,7 @@ impl ast::ToAst for Caret {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Caret => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Caret,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Caret)),
         }
     }
 
@@ -1168,11 +1067,7 @@ impl parse::Peek for Caret {
 }
 
 impl macros::ToTokens for Caret {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Caret,
@@ -1207,10 +1102,7 @@ impl ast::ToAst for CaretEq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::CaretEq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::CaretEq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::CaretEq)),
         }
     }
 
@@ -1246,11 +1138,7 @@ impl parse::Peek for CaretEq {
 }
 
 impl macros::ToTokens for CaretEq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::CaretEq,
@@ -1285,10 +1173,7 @@ impl ast::ToAst for Colon {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Colon => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Colon,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Colon)),
         }
     }
 
@@ -1324,11 +1209,7 @@ impl parse::Peek for Colon {
 }
 
 impl macros::ToTokens for Colon {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Colon,
@@ -1363,10 +1244,7 @@ impl ast::ToAst for ColonColon {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::ColonColon => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::ColonColon,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::ColonColon)),
         }
     }
 
@@ -1402,11 +1280,7 @@ impl parse::Peek for ColonColon {
 }
 
 impl macros::ToTokens for ColonColon {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::ColonColon,
@@ -1441,10 +1315,7 @@ impl ast::ToAst for Comma {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Comma => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Comma,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Comma)),
         }
     }
 
@@ -1480,11 +1351,7 @@ impl parse::Peek for Comma {
 }
 
 impl macros::ToTokens for Comma {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Comma,
@@ -1519,10 +1386,7 @@ impl ast::ToAst for Const {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Const => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Const,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Const)),
         }
     }
 
@@ -1558,11 +1422,7 @@ impl parse::Peek for Const {
 }
 
 impl macros::ToTokens for Const {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Const,
@@ -1597,10 +1457,7 @@ impl ast::ToAst for Continue {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Continue => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Continue,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Continue)),
         }
     }
 
@@ -1636,11 +1493,7 @@ impl parse::Peek for Continue {
 }
 
 impl macros::ToTokens for Continue {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Continue,
@@ -1675,10 +1528,7 @@ impl ast::ToAst for Crate {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Crate => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Crate,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Crate)),
         }
     }
 
@@ -1714,11 +1564,7 @@ impl parse::Peek for Crate {
 }
 
 impl macros::ToTokens for Crate {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Crate,
@@ -1753,10 +1599,7 @@ impl ast::ToAst for Dash {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Dash => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Dash,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Dash)),
         }
     }
 
@@ -1792,11 +1635,7 @@ impl parse::Peek for Dash {
 }
 
 impl macros::ToTokens for Dash {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Dash,
@@ -1831,10 +1670,7 @@ impl ast::ToAst for DashEq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::DashEq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::DashEq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::DashEq)),
         }
     }
 
@@ -1870,11 +1706,7 @@ impl parse::Peek for DashEq {
 }
 
 impl macros::ToTokens for DashEq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::DashEq,
@@ -1909,10 +1741,7 @@ impl ast::ToAst for Default {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Default => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Default,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Default)),
         }
     }
 
@@ -1948,11 +1777,7 @@ impl parse::Peek for Default {
 }
 
 impl macros::ToTokens for Default {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Default,
@@ -1987,10 +1812,7 @@ impl ast::ToAst for Div {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Div => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Div,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Div)),
         }
     }
 
@@ -2026,11 +1848,7 @@ impl parse::Peek for Div {
 }
 
 impl macros::ToTokens for Div {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Div,
@@ -2065,10 +1883,7 @@ impl ast::ToAst for Do {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Do => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Do,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Do)),
         }
     }
 
@@ -2104,11 +1919,7 @@ impl parse::Peek for Do {
 }
 
 impl macros::ToTokens for Do {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Do,
@@ -2143,10 +1954,7 @@ impl ast::ToAst for Dollar {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Dollar => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Dollar,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Dollar)),
         }
     }
 
@@ -2182,11 +1990,7 @@ impl parse::Peek for Dollar {
 }
 
 impl macros::ToTokens for Dollar {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Dollar,
@@ -2221,10 +2025,7 @@ impl ast::ToAst for Dot {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Dot => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Dot,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Dot)),
         }
     }
 
@@ -2260,11 +2061,7 @@ impl parse::Peek for Dot {
 }
 
 impl macros::ToTokens for Dot {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Dot,
@@ -2299,10 +2096,7 @@ impl ast::ToAst for DotDot {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::DotDot => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::DotDot,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::DotDot)),
         }
     }
 
@@ -2338,11 +2132,7 @@ impl parse::Peek for DotDot {
 }
 
 impl macros::ToTokens for DotDot {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::DotDot,
@@ -2377,10 +2167,7 @@ impl ast::ToAst for DotDotEq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::DotDotEq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::DotDotEq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::DotDotEq)),
         }
     }
 
@@ -2416,11 +2203,7 @@ impl parse::Peek for DotDotEq {
 }
 
 impl macros::ToTokens for DotDotEq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::DotDotEq,
@@ -2455,10 +2238,7 @@ impl ast::ToAst for Else {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Else => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Else,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Else)),
         }
     }
 
@@ -2494,11 +2274,7 @@ impl parse::Peek for Else {
 }
 
 impl macros::ToTokens for Else {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Else,
@@ -2533,10 +2309,7 @@ impl ast::ToAst for Enum {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Enum => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Enum,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Enum)),
         }
     }
 
@@ -2572,11 +2345,7 @@ impl parse::Peek for Enum {
 }
 
 impl macros::ToTokens for Enum {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Enum,
@@ -2611,10 +2380,7 @@ impl ast::ToAst for Eq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Eq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Eq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Eq)),
         }
     }
 
@@ -2650,11 +2416,7 @@ impl parse::Peek for Eq {
 }
 
 impl macros::ToTokens for Eq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Eq,
@@ -2689,10 +2451,7 @@ impl ast::ToAst for EqEq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::EqEq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::EqEq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::EqEq)),
         }
     }
 
@@ -2728,11 +2487,7 @@ impl parse::Peek for EqEq {
 }
 
 impl macros::ToTokens for EqEq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::EqEq,
@@ -2767,10 +2522,7 @@ impl ast::ToAst for Extern {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Extern => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Extern,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Extern)),
         }
     }
 
@@ -2806,11 +2558,7 @@ impl parse::Peek for Extern {
 }
 
 impl macros::ToTokens for Extern {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Extern,
@@ -2845,10 +2593,7 @@ impl ast::ToAst for False {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::False => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::False,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::False)),
         }
     }
 
@@ -2884,11 +2629,7 @@ impl parse::Peek for False {
 }
 
 impl macros::ToTokens for False {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::False,
@@ -2923,10 +2664,7 @@ impl ast::ToAst for Final {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Final => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Final,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Final)),
         }
     }
 
@@ -2962,11 +2700,7 @@ impl parse::Peek for Final {
 }
 
 impl macros::ToTokens for Final {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Final,
@@ -3001,10 +2735,7 @@ impl ast::ToAst for Fn {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Fn => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Fn,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Fn)),
         }
     }
 
@@ -3040,11 +2771,7 @@ impl parse::Peek for Fn {
 }
 
 impl macros::ToTokens for Fn {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Fn,
@@ -3079,10 +2806,7 @@ impl ast::ToAst for For {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::For => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::For,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::For)),
         }
     }
 
@@ -3118,11 +2842,7 @@ impl parse::Peek for For {
 }
 
 impl macros::ToTokens for For {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::For,
@@ -3157,10 +2877,7 @@ impl ast::ToAst for Gt {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Gt => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Gt,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Gt)),
         }
     }
 
@@ -3196,11 +2913,7 @@ impl parse::Peek for Gt {
 }
 
 impl macros::ToTokens for Gt {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Gt,
@@ -3235,10 +2948,7 @@ impl ast::ToAst for GtEq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::GtEq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::GtEq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::GtEq)),
         }
     }
 
@@ -3274,11 +2984,7 @@ impl parse::Peek for GtEq {
 }
 
 impl macros::ToTokens for GtEq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::GtEq,
@@ -3313,10 +3019,7 @@ impl ast::ToAst for GtGt {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::GtGt => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::GtGt,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::GtGt)),
         }
     }
 
@@ -3352,11 +3055,7 @@ impl parse::Peek for GtGt {
 }
 
 impl macros::ToTokens for GtGt {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::GtGt,
@@ -3391,10 +3090,7 @@ impl ast::ToAst for GtGtEq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::GtGtEq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::GtGtEq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::GtGtEq)),
         }
     }
 
@@ -3430,11 +3126,7 @@ impl parse::Peek for GtGtEq {
 }
 
 impl macros::ToTokens for GtGtEq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::GtGtEq,
@@ -3469,10 +3161,7 @@ impl ast::ToAst for If {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::If => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::If,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::If)),
         }
     }
 
@@ -3508,11 +3197,7 @@ impl parse::Peek for If {
 }
 
 impl macros::ToTokens for If {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::If,
@@ -3547,10 +3232,7 @@ impl ast::ToAst for Impl {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Impl => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Impl,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Impl)),
         }
     }
 
@@ -3586,11 +3268,7 @@ impl parse::Peek for Impl {
 }
 
 impl macros::ToTokens for Impl {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Impl,
@@ -3625,10 +3303,7 @@ impl ast::ToAst for In {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::In => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::In,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::In)),
         }
     }
 
@@ -3664,11 +3339,7 @@ impl parse::Peek for In {
 }
 
 impl macros::ToTokens for In {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::In,
@@ -3703,10 +3374,7 @@ impl ast::ToAst for Is {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Is => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Is,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Is)),
         }
     }
 
@@ -3742,11 +3410,7 @@ impl parse::Peek for Is {
 }
 
 impl macros::ToTokens for Is {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Is,
@@ -3781,10 +3445,7 @@ impl ast::ToAst for Let {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Let => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Let,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Let)),
         }
     }
 
@@ -3820,14 +3481,81 @@ impl parse::Peek for Let {
 }
 
 impl macros::ToTokens for Let {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Let,
+        })
+    }
+}
+
+/// The `global` keyword.
+#[derive(Debug, clone::TryClone, Clone, Copy, PartialEq, Eq, Hash)]
+#[try_clone(copy)]
+#[non_exhaustive]
+pub struct Global {
+    /// Associated span.
+    pub span: ast::Span,
+}
+
+impl ast::Spanned for Global {
+    #[inline]
+    fn span(&self) -> ast::Span {
+        self.span
+    }
+}
+
+impl ast::OptionSpanned for Global {
+    #[inline]
+    fn option_span(&self) -> Option<ast::Span> {
+        Some(self.span)
+    }
+}
+
+impl ast::ToAst for Global {
+    fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
+        match kind {
+            ast::Kind::Global => Ok(Self { span }),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Global)),
+        }
+    }
+
+    fn matches(kind: &ast::Kind) -> bool {
+        match kind {
+            ast::Kind::Global => true,
+            _ => false,
+        }
+    }
+
+    #[inline]
+    fn into_expectation() -> parse::Expectation {
+        parse::Expectation::Keyword("global")
+    }
+}
+
+impl parse::Parse for Global {
+    fn parse(p: &mut parse::Parser<'_>) -> compile::Result<Self> {
+        let token = p.next()?;
+
+        match token.kind {
+            ast::Kind::Global => Ok(Self { span: token.span }),
+            _ => Err(compile::Error::expected(token, ast::Kind::Global)),
+        }
+    }
+}
+
+impl parse::Peek for Global {
+    #[inline]
+    fn peek(peeker: &mut parse::Peeker<'_>) -> bool {
+        matches!(peeker.nth(0), ast::Kind::Global)
+    }
+}
+
+impl macros::ToTokens for Global {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
+        stream.push(ast::Token {
+            span: self.span,
+            kind: ast::Kind::Global,
         })
     }
 }
@@ -3859,10 +3587,7 @@ impl ast::ToAst for Loop {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Loop => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Loop,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Loop)),
         }
     }
 
@@ -3898,11 +3623,7 @@ impl parse::Peek for Loop {
 }
 
 impl macros::ToTokens for Loop {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Loop,
@@ -3937,10 +3658,7 @@ impl ast::ToAst for Lt {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Lt => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Lt,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Lt)),
         }
     }
 
@@ -3976,11 +3694,7 @@ impl parse::Peek for Lt {
 }
 
 impl macros::ToTokens for Lt {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Lt,
@@ -4015,10 +3729,7 @@ impl ast::ToAst for LtEq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::LtEq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::LtEq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::LtEq)),
         }
     }
 
@@ -4054,11 +3765,7 @@ impl parse::Peek for LtEq {
 }
 
 impl macros::ToTokens for LtEq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::LtEq,
@@ -4093,10 +3800,7 @@ impl ast::ToAst for LtLt {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::LtLt => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::LtLt,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::LtLt)),
         }
     }
 
@@ -4132,11 +3836,7 @@ impl parse::Peek for LtLt {
 }
 
 impl macros::ToTokens for LtLt {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::LtLt,
@@ -4171,10 +3871,7 @@ impl ast::ToAst for LtLtEq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::LtLtEq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::LtLtEq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::LtLtEq)),
         }
     }
 
@@ -4210,11 +3907,7 @@ impl parse::Peek for LtLtEq {
 }
 
 impl macros::ToTokens for LtLtEq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::LtLtEq,
@@ -4249,10 +3942,7 @@ impl ast::ToAst for Macro {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Macro => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Macro,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Macro)),
         }
     }
 
@@ -4288,11 +3978,7 @@ impl parse::Peek for Macro {
 }
 
 impl macros::ToTokens for Macro {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Macro,
@@ -4327,10 +4013,7 @@ impl ast::ToAst for Match {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Match => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Match,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Match)),
         }
     }
 
@@ -4366,11 +4049,7 @@ impl parse::Peek for Match {
 }
 
 impl macros::ToTokens for Match {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Match,
@@ -4405,10 +4084,7 @@ impl ast::ToAst for Mod {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Mod => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Mod,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Mod)),
         }
     }
 
@@ -4444,11 +4120,7 @@ impl parse::Peek for Mod {
 }
 
 impl macros::ToTokens for Mod {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Mod,
@@ -4483,10 +4155,7 @@ impl ast::ToAst for Move {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Move => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Move,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Move)),
         }
     }
 
@@ -4522,11 +4191,7 @@ impl parse::Peek for Move {
 }
 
 impl macros::ToTokens for Move {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Move,
@@ -4561,10 +4226,7 @@ impl ast::ToAst for Mut {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Mut => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Mut,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Mut)),
         }
     }
 
@@ -4600,11 +4262,7 @@ impl parse::Peek for Mut {
 }
 
 impl macros::ToTokens for Mut {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Mut,
@@ -4639,10 +4297,7 @@ impl ast::ToAst for Not {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Not => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Not,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Not)),
         }
     }
 
@@ -4678,11 +4333,7 @@ impl parse::Peek for Not {
 }
 
 impl macros::ToTokens for Not {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Not,
@@ -4717,10 +4368,7 @@ impl ast::ToAst for OffsetOf {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::OffsetOf => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::OffsetOf,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::OffsetOf)),
         }
     }
 
@@ -4756,11 +4404,7 @@ impl parse::Peek for OffsetOf {
 }
 
 impl macros::ToTokens for OffsetOf {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::OffsetOf,
@@ -4795,10 +4439,7 @@ impl ast::ToAst for Override {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Override => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Override,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Override)),
         }
     }
 
@@ -4834,11 +4475,7 @@ impl parse::Peek for Override {
 }
 
 impl macros::ToTokens for Override {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Override,
@@ -4873,10 +4510,7 @@ impl ast::ToAst for Perc {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Perc => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Perc,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Perc)),
         }
     }
 
@@ -4912,11 +4546,7 @@ impl parse::Peek for Perc {
 }
 
 impl macros::ToTokens for Perc {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Perc,
@@ -4951,10 +4581,7 @@ impl ast::ToAst for PercEq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::PercEq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::PercEq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::PercEq)),
         }
     }
 
@@ -4990,11 +4617,7 @@ impl parse::Peek for PercEq {
 }
 
 impl macros::ToTokens for PercEq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::PercEq,
@@ -5029,10 +4652,7 @@ impl ast::ToAst for Pipe {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Pipe => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Pipe,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Pipe)),
         }
     }
 
@@ -5068,11 +4688,7 @@ impl parse::Peek for Pipe {
 }
 
 impl macros::ToTokens for Pipe {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Pipe,
@@ -5107,10 +4723,7 @@ impl ast::ToAst for PipeEq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::PipeEq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::PipeEq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::PipeEq)),
         }
     }
 
@@ -5146,11 +4759,7 @@ impl parse::Peek for PipeEq {
 }
 
 impl macros::ToTokens for PipeEq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::PipeEq,
@@ -5185,10 +4794,7 @@ impl ast::ToAst for PipePipe {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::PipePipe => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::PipePipe,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::PipePipe)),
         }
     }
 
@@ -5224,11 +4830,7 @@ impl parse::Peek for PipePipe {
 }
 
 impl macros::ToTokens for PipePipe {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::PipePipe,
@@ -5263,10 +4865,7 @@ impl ast::ToAst for Plus {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Plus => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Plus,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Plus)),
         }
     }
 
@@ -5302,11 +4901,7 @@ impl parse::Peek for Plus {
 }
 
 impl macros::ToTokens for Plus {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Plus,
@@ -5341,10 +4936,7 @@ impl ast::ToAst for PlusEq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::PlusEq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::PlusEq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::PlusEq)),
         }
     }
 
@@ -5380,11 +4972,7 @@ impl parse::Peek for PlusEq {
 }
 
 impl macros::ToTokens for PlusEq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::PlusEq,
@@ -5419,10 +5007,7 @@ impl ast::ToAst for Pound {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Pound => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Pound,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Pound)),
         }
     }
 
@@ -5458,11 +5043,7 @@ impl parse::Peek for Pound {
 }
 
 impl macros::ToTokens for Pound {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Pound,
@@ -5497,10 +5078,7 @@ impl ast::ToAst for Priv {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Priv => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Priv,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Priv)),
         }
     }
 
@@ -5536,11 +5114,7 @@ impl parse::Peek for Priv {
 }
 
 impl macros::ToTokens for Priv {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Priv,
@@ -5575,10 +5149,7 @@ impl ast::ToAst for Proc {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Proc => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Proc,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Proc)),
         }
     }
 
@@ -5614,11 +5185,7 @@ impl parse::Peek for Proc {
 }
 
 impl macros::ToTokens for Proc {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Proc,
@@ -5653,10 +5220,7 @@ impl ast::ToAst for Pub {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Pub => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Pub,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Pub)),
         }
     }
 
@@ -5692,11 +5256,7 @@ impl parse::Peek for Pub {
 }
 
 impl macros::ToTokens for Pub {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Pub,
@@ -5731,10 +5291,7 @@ impl ast::ToAst for Pure {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Pure => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Pure,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Pure)),
         }
     }
 
@@ -5770,11 +5327,7 @@ impl parse::Peek for Pure {
 }
 
 impl macros::ToTokens for Pure {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Pure,
@@ -5809,10 +5362,7 @@ impl ast::ToAst for QuestionMark {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::QuestionMark => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::QuestionMark,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::QuestionMark)),
         }
     }
 
@@ -5848,11 +5398,7 @@ impl parse::Peek for QuestionMark {
 }
 
 impl macros::ToTokens for QuestionMark {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::QuestionMark,
@@ -5887,10 +5433,7 @@ impl ast::ToAst for Ref {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Ref => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Ref,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Ref)),
         }
     }
 
@@ -5926,11 +5469,7 @@ impl parse::Peek for Ref {
 }
 
 impl macros::ToTokens for Ref {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Ref,
@@ -5965,10 +5504,7 @@ impl ast::ToAst for Return {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Return => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Return,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Return)),
         }
     }
 
@@ -6004,11 +5540,7 @@ impl parse::Peek for Return {
 }
 
 impl macros::ToTokens for Return {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Return,
@@ -6043,10 +5575,7 @@ impl ast::ToAst for Rocket {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Rocket => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Rocket,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Rocket)),
         }
     }
 
@@ -6082,11 +5611,7 @@ impl parse::Peek for Rocket {
 }
 
 impl macros::ToTokens for Rocket {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Rocket,
@@ -6121,10 +5646,7 @@ impl ast::ToAst for Select {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Select => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Select,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Select)),
         }
     }
 
@@ -6160,11 +5682,7 @@ impl parse::Peek for Select {
 }
 
 impl macros::ToTokens for Select {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Select,
@@ -6199,10 +5717,7 @@ impl ast::ToAst for SelfType {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::SelfType => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::SelfType,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::SelfType)),
         }
     }
 
@@ -6238,11 +5753,7 @@ impl parse::Peek for SelfType {
 }
 
 impl macros::ToTokens for SelfType {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::SelfType,
@@ -6277,10 +5788,7 @@ impl ast::ToAst for SelfValue {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::SelfValue => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::SelfValue,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::SelfValue)),
         }
     }
 
@@ -6316,11 +5824,7 @@ impl parse::Peek for SelfValue {
 }
 
 impl macros::ToTokens for SelfValue {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::SelfValue,
@@ -6355,10 +5859,7 @@ impl ast::ToAst for SemiColon {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::SemiColon => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::SemiColon,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::SemiColon)),
         }
     }
 
@@ -6394,11 +5895,7 @@ impl parse::Peek for SemiColon {
 }
 
 impl macros::ToTokens for SemiColon {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::SemiColon,
@@ -6433,10 +5930,7 @@ impl ast::ToAst for SizeOf {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::SizeOf => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::SizeOf,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::SizeOf)),
         }
     }
 
@@ -6472,11 +5966,7 @@ impl parse::Peek for SizeOf {
 }
 
 impl macros::ToTokens for SizeOf {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::SizeOf,
@@ -6511,10 +6001,7 @@ impl ast::ToAst for SlashEq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::SlashEq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::SlashEq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::SlashEq)),
         }
     }
 
@@ -6550,11 +6037,7 @@ impl parse::Peek for SlashEq {
 }
 
 impl macros::ToTokens for SlashEq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::SlashEq,
@@ -6589,10 +6072,7 @@ impl ast::ToAst for Star {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Star => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Star,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Star)),
         }
     }
 
@@ -6628,11 +6108,7 @@ impl parse::Peek for Star {
 }
 
 impl macros::ToTokens for Star {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Star,
@@ -6667,10 +6143,7 @@ impl ast::ToAst for StarEq {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::StarEq => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::StarEq,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::StarEq)),
         }
     }
 
@@ -6706,11 +6179,7 @@ impl parse::Peek for StarEq {
 }
 
 impl macros::ToTokens for StarEq {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::StarEq,
@@ -6745,10 +6214,7 @@ impl ast::ToAst for Static {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Static => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Static,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Static)),
         }
     }
 
@@ -6784,11 +6250,7 @@ impl parse::Peek for Static {
 }
 
 impl macros::ToTokens for Static {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Static,
@@ -6823,10 +6285,7 @@ impl ast::ToAst for Struct {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Struct => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Struct,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Struct)),
         }
     }
 
@@ -6862,11 +6321,7 @@ impl parse::Peek for Struct {
 }
 
 impl macros::ToTokens for Struct {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Struct,
@@ -6901,10 +6356,7 @@ impl ast::ToAst for Super {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Super => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Super,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Super)),
         }
     }
 
@@ -6940,11 +6392,7 @@ impl parse::Peek for Super {
 }
 
 impl macros::ToTokens for Super {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Super,
@@ -6979,10 +6427,7 @@ impl ast::ToAst for Tilde {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Tilde => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Tilde,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Tilde)),
         }
     }
 
@@ -7018,11 +6463,7 @@ impl parse::Peek for Tilde {
 }
 
 impl macros::ToTokens for Tilde {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Tilde,
@@ -7057,10 +6498,7 @@ impl ast::ToAst for True {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::True => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::True,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::True)),
         }
     }
 
@@ -7096,11 +6534,7 @@ impl parse::Peek for True {
 }
 
 impl macros::ToTokens for True {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::True,
@@ -7135,10 +6569,7 @@ impl ast::ToAst for TypeOf {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::TypeOf => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::TypeOf,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::TypeOf)),
         }
     }
 
@@ -7174,11 +6605,7 @@ impl parse::Peek for TypeOf {
 }
 
 impl macros::ToTokens for TypeOf {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::TypeOf,
@@ -7213,10 +6640,7 @@ impl ast::ToAst for Underscore {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Underscore => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Underscore,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Underscore)),
         }
     }
 
@@ -7252,11 +6676,7 @@ impl parse::Peek for Underscore {
 }
 
 impl macros::ToTokens for Underscore {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Underscore,
@@ -7291,10 +6711,7 @@ impl ast::ToAst for Unsafe {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Unsafe => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Unsafe,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Unsafe)),
         }
     }
 
@@ -7330,11 +6747,7 @@ impl parse::Peek for Unsafe {
 }
 
 impl macros::ToTokens for Unsafe {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Unsafe,
@@ -7369,10 +6782,7 @@ impl ast::ToAst for Use {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Use => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Use,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Use)),
         }
     }
 
@@ -7408,11 +6818,7 @@ impl parse::Peek for Use {
 }
 
 impl macros::ToTokens for Use {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Use,
@@ -7447,10 +6853,7 @@ impl ast::ToAst for Virtual {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Virtual => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Virtual,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Virtual)),
         }
     }
 
@@ -7486,11 +6889,7 @@ impl parse::Peek for Virtual {
 }
 
 impl macros::ToTokens for Virtual {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Virtual,
@@ -7525,10 +6924,7 @@ impl ast::ToAst for While {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::While => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::While,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::While)),
         }
     }
 
@@ -7564,11 +6960,7 @@ impl parse::Peek for While {
 }
 
 impl macros::ToTokens for While {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::While,
@@ -7603,10 +6995,7 @@ impl ast::ToAst for Yield {
     fn to_ast(span: ast::Span, kind: ast::Kind) -> compile::Result<Self> {
         match kind {
             ast::Kind::Yield => Ok(Self { span }),
-            _ => Err(compile::Error::expected(
-                ast::Token { span, kind },
-                ast::Kind::Yield,
-            )),
+            _ => Err(compile::Error::expected(ast::Token { span, kind }, ast::Kind::Yield)),
         }
     }
 
@@ -7642,11 +7031,7 @@ impl parse::Peek for Yield {
 }
 
 impl macros::ToTokens for Yield {
-    fn to_tokens(
-        &self,
-        _: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, _: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             span: self.span,
             kind: ast::Kind::Yield,
@@ -7749,6 +7134,9 @@ macro_rules! T {
     };
     (let) => {
         $crate::ast::Let
+    };
+    (global) => {
+        $crate::ast::Global
     };
     (loop) => {
         $crate::ast::Loop
@@ -8022,6 +7410,7 @@ macro_rules! K {
     (in) => { $crate::ast::Kind::In };
     (is) => { $crate::ast::Kind::Is };
     (let) => { $crate::ast::Kind::Let };
+    (global) => { $crate::ast::Kind::Global };
     (loop) => { $crate::ast::Kind::Loop };
     (macro) => { $crate::ast::Kind::Macro };
     (match) => { $crate::ast::Kind::Match };
@@ -8237,6 +7626,8 @@ pub enum Kind {
     Is,
     /// The `let` keyword.
     Let,
+    /// The `global` keyword.
+    Global,
     /// The `loop` keyword.
     Loop,
     /// `<`.
@@ -8531,6 +7922,7 @@ impl Kind {
             "in" => Some(Self::In),
             "is" => Some(Self::Is),
             "let" => Some(Self::Let),
+            "global" => Some(Self::Global),
             "loop" => Some(Self::Loop),
             "macro" => Some(Self::Macro),
             "match" => Some(Self::Match),
@@ -8593,6 +7985,7 @@ impl Kind {
             Self::In => Some("in"),
             Self::Is => Some("is"),
             Self::Let => Some("let"),
+            Self::Global => Some("global"),
             Self::Loop => Some("loop"),
             Self::Macro => Some("macro"),
             Self::Match => Some("match"),
@@ -8679,11 +8072,7 @@ impl fmt::Display for Kind {
 }
 
 impl macros::ToTokens for Kind {
-    fn to_tokens(
-        &self,
-        context: &mut macros::MacroContext<'_, '_, '_>,
-        stream: &mut macros::TokenStream,
-    ) -> crate::alloc::Result<()> {
+    fn to_tokens(&self, context: &mut macros::MacroContext<'_, '_, '_>, stream: &mut macros::TokenStream) -> crate::alloc::Result<()> {
         stream.push(ast::Token {
             kind: *self,
             span: context.macro_span(),
@@ -8736,6 +8125,7 @@ impl parse::IntoExpectation for Kind {
             Self::In => parse::Expectation::Keyword("in"),
             Self::Is => parse::Expectation::Keyword("is"),
             Self::Let => parse::Expectation::Keyword("let"),
+            Self::Global => parse::Expectation::Keyword("global"),
             Self::Loop => parse::Expectation::Keyword("loop"),
             Self::Macro => parse::Expectation::Keyword("macro"),
             Self::Match => parse::Expectation::Keyword("match"),
@@ -8854,9 +8244,7 @@ impl parse::IntoExpectation for Kind {
             Self::ExprOperator => parse::Expectation::Syntax("the operator in an expression"),
             Self::ExprIf => parse::Expectation::Syntax("an `if` expression"),
             Self::ExprElse => parse::Expectation::Syntax("the `else` part of an if-expression"),
-            Self::ExprElseIf => {
-                parse::Expectation::Syntax("the `else if` part of an if-expression")
-            }
+            Self::ExprElseIf => parse::Expectation::Syntax("the `else if` part of an if-expression"),
             Self::ExprWhile => parse::Expectation::Syntax("a `while` expression"),
             Self::ExprLoop => parse::Expectation::Syntax("a `loop` expression"),
             Self::ExprBreak => parse::Expectation::Syntax("a `break` expression"),
@@ -8865,9 +8253,7 @@ impl parse::IntoExpectation for Kind {
             Self::ExprYield => parse::Expectation::Syntax("a `yield` expression"),
             Self::ExprFor => parse::Expectation::Syntax("a `for` expression"),
             Self::ExprRange => parse::Expectation::Syntax("a `<start>..<end>` expression"),
-            Self::ExprRangeInclusive => {
-                parse::Expectation::Syntax("a `<start>..=<end>` expression")
-            }
+            Self::ExprRangeInclusive => parse::Expectation::Syntax("a `<start>..=<end>` expression"),
             Self::ExprRangeTo => parse::Expectation::Syntax("a `..<end>` expression"),
             Self::ExprRangeToInclusive => parse::Expectation::Syntax("a `..=<end>` expression"),
             Self::ExprRangeFrom => parse::Expectation::Syntax("a `<start>..` expression"),

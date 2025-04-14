@@ -29,6 +29,7 @@ pub(crate) fn kind_from_ident(ident: &str) -> Option<quote::Kind> {
         "in" => Some(quote::Kind("In")),
         "is" => Some(quote::Kind("Is")),
         "let" => Some(quote::Kind("Let")),
+        "global" => Some(quote::Kind("Global")),
         "loop" => Some(quote::Kind("Loop")),
         "macro" => Some(quote::Kind("Macro")),
         "match" => Some(quote::Kind("Match")),

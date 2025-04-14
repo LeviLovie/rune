@@ -466,6 +466,10 @@ pub(crate) fn expr<'hir>(
             pat: pat_binding(cx, &ast.pat)?,
             expr: expr(cx, &ast.expr)?,
         })),
+        ast::Expr::Global(ast) => hir::ExprKind::Global(alloc!(hir::ExprGlobal {
+            pat: pat_binding(cx, &ast.pat)?,
+            expr: expr(cx, &ast.expr)?,
+        })),
         ast::Expr::If(ast) => hir::ExprKind::If(alloc!(expr_if(cx, ast)?)),
         ast::Expr::Match(ast) => hir::ExprKind::Match(alloc!(hir::ExprMatch {
             expr: alloc!(expr(cx, &ast.expr)?),

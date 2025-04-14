@@ -1,0 +1,10 @@
+const original_text = "Some text";
+global text = original_text;
+
+fn func() {
+    text = "Another string";
+}
+
+dbg!("Text: {}", text);
+func();
+dbg!("Text: {}", text);

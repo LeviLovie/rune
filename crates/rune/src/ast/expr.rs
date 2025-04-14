@@ -132,6 +132,8 @@ pub enum Expr {
     For(ast::ExprFor),
     /// A let expression.
     Let(ast::ExprLet),
+    /// A global expression.
+    Global(ast::ExprGlobal),
     /// An if expression.
     If(ast::ExprIf),
     /// An match expression.
@@ -198,6 +200,7 @@ impl Expr {
             Self::Loop(expr) => &expr.attributes,
             Self::For(expr) => &expr.attributes,
             Self::Let(expr) => &expr.attributes,
+            Self::Global(expr) => &expr.attributes,
             Self::If(expr) => &expr.attributes,
             Self::Select(expr) => &expr.attributes,
             Self::Lit(expr) => &expr.attributes,
@@ -263,6 +266,7 @@ impl Expr {
             Self::Loop(expr) => take(&mut expr.attributes),
             Self::For(expr) => take(&mut expr.attributes),
             Self::Let(expr) => take(&mut expr.attributes),
+            Self::Global(expr) => take(&mut expr.attributes),
             Self::If(expr) => take(&mut expr.attributes),
             Self::Select(expr) => take(&mut expr.attributes),
             Self::Lit(expr) => take(&mut expr.attributes),
@@ -520,6 +524,7 @@ fn base(
             take(&mut label),
         )?),
         K![let] => Expr::Let(ast::ExprLet::parse_with_meta(p, take(attributes))?),
+        K![global] => Expr::Global(ast::ExprGlobal::parse_with_meta(p, take(attributes))?),
         K![if] => Expr::If(ast::ExprIf::parse_with_meta(p, take(attributes))?),
         K![match] => Expr::Match(ast::ExprMatch::parse_with_attributes(p, take(attributes))?),
         K!['['] => Expr::Vec(ast::ExprVec::parse_with_meta(p, take(attributes))?),

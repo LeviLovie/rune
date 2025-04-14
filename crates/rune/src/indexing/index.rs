@@ -552,6 +552,16 @@ fn expr_let(idx: &mut Indexer<'_, '_>, ast: &mut ast::ExprLet) -> compile::Resul
 }
 
 #[instrument_ast(span = ast)]
+fn expr_global(idx: &mut Indexer<'_, '_>, ast: &mut ast::ExprGlobal) -> compile::Result<()> {
+    if let Some(mut_token) = ast.mut_token {
+        return Err(compile::Error::new(mut_token, ErrorKind::UnsupportedMut));
+    }
+    pat(idx, &mut ast.pat)?;
+    expr(idx, &mut ast.expr)?;
+    Ok(())
+}
+
+#[instrument_ast(span = ast)]
 fn pat(idx: &mut Indexer<'_, '_>, ast: &mut ast::Pat) -> compile::Result<()> {
     match ast {
         ast::Pat::Path(pat) => {
@@ -629,6 +639,9 @@ pub(crate) fn expr(idx: &mut Indexer<'_, '_>, ast: &mut ast::Expr) -> compile::R
         }
         ast::Expr::Let(ast) => {
             expr_let(idx, ast)?;
+        }
+        ast::Expr::Global(ast) => {
+            expr_global(idx, ast)?;
         }
         ast::Expr::Block(ast) => {
             expr_block(idx, ast)?;
